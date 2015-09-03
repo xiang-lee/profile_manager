@@ -2,22 +2,22 @@
 create database profilemanager;
 
 -- create tables
-create table `group` (
+create table pm_group (
 	id int(20),
 	name varchar(100),
 	PRIMARY KEY (id)
 );
 
-create table user (
+create table pm_user (
 	id int(20) primary key,
 	name varchar(100),
-	email varchar(100),
-	group_id int(20),
-	FOREIGN KEY (group_id) REFERENCES `group`(id)
+	email varchar(100)
 );
 
-create table user_group (
+create table pm_user_group (
 	user_id int(20),
-	group_id int(20)
+	group_id int(20),
+	FOREIGN KEY (user_id) REFERENCES pm_user(id),
+	FOREIGN KEY (group_id) REFERENCES pm_group(id)
 );
 
