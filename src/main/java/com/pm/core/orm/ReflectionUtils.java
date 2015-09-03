@@ -7,6 +7,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 //import org.apache.log4j.Logger;
 import org.springframework.util.Assert;
 
@@ -19,7 +20,7 @@ import org.springframework.util.Assert;
  */
 public class ReflectionUtils {
 	
-//	private static final Logger logger = Logger.getLogger(ReflectionUtils.class);
+	private static final Logger logger = Logger.getLogger(ReflectionUtils.class);
 
 	/**
 	 * 调用Getter方法.
@@ -61,7 +62,7 @@ public class ReflectionUtils {
 		try {
 			result = field.get(obj);
 		} catch (IllegalAccessException e) {
-//			logger.error("不可能抛出的异常{}", e);
+			logger.error("Exception in ReflectionUtils", e);
 		}
 		return result;
 	}
@@ -79,7 +80,7 @@ public class ReflectionUtils {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-//			logger.error("不可能抛出的异常:{}", e);
+			logger.error("Exception in ReflectionUtils", e);
 		}
 	}
 
@@ -176,19 +177,19 @@ public class ReflectionUtils {
 		Type genType = clazz.getGenericSuperclass();
 
 		if (!(genType instanceof ParameterizedType)) {
-//			logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
+			logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
 			return Object.class;
 		}
 
 		Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
 
 		if (index >= params.length || index < 0) {
-//			logger.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
-//					+ params.length);
+			logger.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
+					+ params.length);
 			return Object.class;
 		}
 		if (!(params[index] instanceof Class)) {
-//			logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
+			logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
 			return Object.class;
 		}
 
