@@ -14,7 +14,6 @@
 		<m2eclipse.wtp.contextRoot>/profileManager</m2eclipse.wtp.contextRoot>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<!-- 3.2.3.RELEASE -->
-		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<hibernate.version>4.2.4.Final</hibernate.version>
 		<!-- 4.2.4.Final -->
 	</properties>
