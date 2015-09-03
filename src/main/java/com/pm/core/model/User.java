@@ -28,7 +28,7 @@ public class User {
 		return email;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "pm_user_group", joinColumns = { 
 			@JoinColumn(name = "user_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "group_id", 
@@ -43,7 +43,7 @@ public class User {
 	public long getId() {
 		return id;
 	}
-	
+
 	@Column(name = "name")
 	public String getName() {
 		return name;
@@ -56,11 +56,17 @@ public class User {
 	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email
+				+ ", groups=" + groups + "]";
 	}
 	
 }

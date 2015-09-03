@@ -141,7 +141,7 @@ public class SimpleHibernateDao<T, PK extends Serializable> {
 	}
 
 	/**
-	 * 按属性查找唯�?���? 匹配方式为相�?
+	 * 按属性查找唯一对象, 匹配方式为相等.
 	 */
 	public T findUniqueBy(final String propertyName, final Object value) {
 		Assert.hasText(propertyName, "propertyName不能为空");

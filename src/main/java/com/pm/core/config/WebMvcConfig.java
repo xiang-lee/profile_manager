@@ -23,8 +23,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.pm.core.dao.UserDao;
+import com.pm.core.dao.impl.UserDaoImpl;
 
 
 @Configuration
@@ -33,6 +34,11 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
     
+	@Bean
+    public UserDao createUserDao() {
+    	return new UserDaoImpl();
+    }
+	
   
     /*
      * multipartResolver
@@ -62,16 +68,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public SessionFactory sessionFactory() throws PropertyVetoException, SQLException {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
         builder
-        	.scanPackages("com.pm.core.demain")
+        	.scanPackages("com.pm.core.model")
             .addProperties(getHibernateProperties());
-
         return builder.buildSessionFactory();
     }
 
 	private Properties getHibernateProperties() {
         Properties prop = new Properties();
-        prop.put("hibernate.format_sql", "false");
-        prop.put("hibernate.show_sql", "false");
+        prop.put("hibernate.format_sql", "true");
+        prop.put("hibernate.show_sql", "true");
         prop.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         prop.put("hibernate.connection.useUnicode", "true");
         prop.put("hibernate.connection.characterEncoding", "true");

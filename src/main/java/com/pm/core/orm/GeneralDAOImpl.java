@@ -26,21 +26,9 @@ import com.pm.core.orm.PropertyFilter.MatchType;
 @SuppressWarnings("unchecked")
 public class GeneralDAOImpl<T, PK extends Serializable> extends SimpleHibernateDao<T, PK> implements GeneralDAO<T, PK>{
 	
-	private Class<T> type;
-	
 	public GeneralDAOImpl() {
 		super();
 	}
-	
-	public Class<T> getPersistentClass() {
-        return type;
-    }
- 
-	
-	public GeneralDAOImpl(Class<T> type) {
-        this.type = type;
-    }
-	
 	
 	@Override
 	public void save(T entity) {
@@ -62,7 +50,7 @@ public class GeneralDAOImpl<T, PK extends Serializable> extends SimpleHibernateD
 	}
 
 	public T findById(Serializable id) {
-        return (T) sessionFactory.getCurrentSession().get(getPersistentClass(), id);
+        return (T) sessionFactory.getCurrentSession().get(entityClass, id);
 	}
 	
 	@Override
@@ -87,7 +75,7 @@ public class GeneralDAOImpl<T, PK extends Serializable> extends SimpleHibernateD
 	}
 	
 	private List<T> findByCriteria(Criterion... criterions) { 
-		Criteria crit = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());  
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(entityClass);  
 		for (Criterion c : criterions) {  
 			crit.add(c);  
 		}  
@@ -155,7 +143,7 @@ public class GeneralDAOImpl<T, PK extends Serializable> extends SimpleHibernateD
 	 */
 	public Page<T> findPage(final Page<T> page, final Criterion... criterions) {
 		Assert.notNull(page, "page不能为空");
-		Criteria crit = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());  
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(entityClass);  
 		for (Criterion c : criterions) {  
 			crit.add(c);  
 		} 

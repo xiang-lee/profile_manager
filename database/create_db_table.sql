@@ -9,7 +9,7 @@ create table pm_group (
 );
 
 create table pm_user (
-	id int(20) primary key,
+	id int(20) primary key NOT NULL AUTO_INCREMENT,
 	name varchar(100),
 	email varchar(100)
 );
@@ -20,4 +20,3 @@ create table pm_user_group (
 	FOREIGN KEY (user_id) REFERENCES pm_user(id),
 	FOREIGN KEY (group_id) REFERENCES pm_group(id)
 );
-
