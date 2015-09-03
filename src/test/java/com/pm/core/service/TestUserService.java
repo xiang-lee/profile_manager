@@ -1,7 +1,8 @@
-package com.pm.core.dao;
+package com.pm.core.service;
+
+import java.util.List;
 
 import junit.framework.Assert;
-import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,20 +15,25 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.pm.core.config.WebMvcConfig;
 import com.pm.core.model.User;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebMvcConfig.class)
 @WebAppConfiguration
 @EnableWebMvc
-public class TestUserDao extends TestCase {
+public class TestUserService {
 
 	@Autowired
-    UserDao userDao;
+    UserService userService;
 	
 	@Test
 	public void testFindByName() {
-		User user = userDao.findByName("xiang");
+		User user = userService.findByName("xiang");
 		Assert.assertNotNull(user);
 	}
-	
+
+	@Test
+	public void testFindAllUsers() {
+		List<User> user = userService.findAllUsers();
+		Assert.assertNotNull(user);
+	}
+
 }

@@ -23,9 +23,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.pm.core.dao.UserDao;
 import com.pm.core.dao.impl.UserDaoImpl;
+import com.pm.core.service.UserService;
+import com.pm.core.service.impl.UserServiceImpl;
 
 
 @Configuration
@@ -33,7 +36,11 @@ import com.pm.core.dao.impl.UserDaoImpl;
 @EnableTransactionManagement
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
-    
+	@Bean
+	public UserService createUserService(UserDao userDao) {
+		return new UserServiceImpl();
+	}
+	
 	@Bean
     public UserDao createUserDao() {
     	return new UserDaoImpl();
