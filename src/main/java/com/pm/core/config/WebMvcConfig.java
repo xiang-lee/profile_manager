@@ -117,9 +117,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		cpd.setDriverClass("com.mysql.jdbc.Driver");
 	    
 	    //local host
-		cpd.setJdbcUrl("jdbc:mysql://localhost:3306/profilemanager");
+		cpd.setJdbcUrl("jdbc:mysql://localhost:3307/profilemanager");
 		cpd.setUser("root");
-		cpd.setPassword("xiang55");
+		cpd.setPassword("root");
 
 		
 		//configure c3p0
