@@ -30,7 +30,7 @@ public class Group {
 		return name;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "groups")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
 	public Set<User> getUsers() {
 		return users;
 	}
