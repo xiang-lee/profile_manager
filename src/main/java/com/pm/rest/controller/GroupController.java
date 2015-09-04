@@ -27,7 +27,7 @@ public class GroupController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "group")
 	public ResponseEntity<?> findAllGroup(){
-		return new ResponseEntity<List<Group>>(groupService.findAllGroups(), HttpStatus.OK);
+		return new ResponseEntity<List<Group>>(groupService.findAllGroups(), HttpStatus.OK );
 	}
 
 }
