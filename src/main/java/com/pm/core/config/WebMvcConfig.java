@@ -25,9 +25,13 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.pm.core.dao.GroupDao;
 import com.pm.core.dao.UserDao;
+import com.pm.core.dao.impl.GroupDaoImpl;
 import com.pm.core.dao.impl.UserDaoImpl;
+import com.pm.core.service.GroupService;
 import com.pm.core.service.UserService;
+import com.pm.core.service.impl.GroupServiceImpl;
 import com.pm.core.service.impl.UserServiceImpl;
 
 
@@ -37,7 +41,7 @@ import com.pm.core.service.impl.UserServiceImpl;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
-	public UserService createUserService(UserDao userDao) {
+	public UserService createUserService() {
 		return new UserServiceImpl();
 	}
 	
@@ -46,7 +50,18 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     	return new UserDaoImpl();
     }
 	
+	@Bean
+    public GroupDao createGroupDao() {
+    	return new GroupDaoImpl();
+    }
   
+	@Bean
+    public GroupService createGroupService() {
+    	return new GroupServiceImpl();
+    }
+  
+	
+	
     /*
      * multipartResolver
      */
