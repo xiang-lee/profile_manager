@@ -1,9 +1,14 @@
+-- drop db
+drop database if exists profilemanager;
+
 -- create db
 create database profilemanager;
 
+use profilemanager;
+
 -- create tables
 create table pm_group (
-	id int(20),
+	id int(20) NOT NULL AUTO_INCREMENT,
 	name varchar(100),
 	PRIMARY KEY (id)
 );
@@ -20,3 +25,7 @@ create table pm_user_group (
 	FOREIGN KEY (user_id) REFERENCES pm_user(id),
 	FOREIGN KEY (group_id) REFERENCES pm_group(id)
 );
+
+-- data for Junit 
+insert pm_user (name,email) values ('xiang','xiangireland@gmail.com');
+insert pm_group (name) values ('group1');
