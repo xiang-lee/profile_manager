@@ -1,4 +1,4 @@
-package com.pm.core.service;
+package com.pm.core.service.impl;
 
 import java.util.List;
 
@@ -14,12 +14,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.pm.core.config.WebMvcConfig;
 import com.pm.core.model.User;
+import com.pm.core.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebMvcConfig.class)
 @WebAppConfiguration
 @EnableWebMvc
-public class TestUserService {
+public class UserServiceTest {
 
 	@Autowired
     UserService userService;
