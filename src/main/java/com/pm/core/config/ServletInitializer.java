@@ -21,6 +21,8 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		//need to change, when remname the package name
 		context.scan(ClassUtils.getPackageName(getClass()),"com.pm.rest.controller");
+		//context.scan(ClassUtils.getPackageName(getClass()),"com.pm.aspect");
+		
 		return context;
 	}
 

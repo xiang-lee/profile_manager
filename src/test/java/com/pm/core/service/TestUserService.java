@@ -27,6 +27,7 @@ public class TestUserService {
 	@Test
 	public void testFindByName() {
 		User user = userService.findByName("xiang");
+		System.out.println("user is:"+user);
 		Assert.assertNotNull(user);
 	}
 

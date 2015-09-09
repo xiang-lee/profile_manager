@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.pm.core.dao.UserDao;
 import com.pm.core.model.User;
 import com.pm.core.service.UserService;
-
 @Transactional
 public class UserServiceImpl implements UserService{
 
