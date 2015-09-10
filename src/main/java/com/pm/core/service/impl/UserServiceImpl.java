@@ -11,12 +11,11 @@ import com.pm.core.model.User;
 import com.pm.core.service.UserService;
 @Transactional
 public class UserServiceImpl implements UserService{
-
 	@Autowired
-	// @Qualifier("userDao123")
 	@Qualifier("userDao")
 	UserDao userDao;
 	
+
 	public User findByName(String name) {
 		return userDao.findByName(name);
 	}

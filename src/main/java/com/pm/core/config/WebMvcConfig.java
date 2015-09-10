@@ -1,14 +1,11 @@
 package com.pm.core.config;
 
 import java.beans.PropertyVetoException;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
