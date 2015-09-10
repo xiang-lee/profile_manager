@@ -19,16 +19,16 @@ public class LoggingAspect{
 	}
 	
 	//Comment from Xiang, this logaround cause the user is null after execution, need to fix
-	@Around("execution(* com.pm.core.service.UserService.findByName(*))")
-	public void logaround(ProceedingJoinPoint joinpoint){
-		try{
-			System.out.println("logAround() before is running!");
-			joinpoint.proceed();
-			System.out.println("logAround() after is running!");
-		}
-		catch(Throwable t){
-			System.out.println("logAround() exception!" + t);
-		}
-	}
+//	@Around("execution(* com.pm.core.service.UserService.findByName(*))")
+//	public void logaround(ProceedingJoinPoint joinpoint){
+//		try{
+//			System.out.println("logAround() before is running!");
+//			joinpoint.proceed();
+//			System.out.println("logAround() after is running!");
+//		}
+//		catch(Throwable t){
+//			System.out.println("logAround() exception!" + t);
+//		}
+//	}
 	
 }

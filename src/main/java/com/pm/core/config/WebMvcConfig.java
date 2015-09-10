@@ -1,11 +1,14 @@
 package com.pm.core.config;
 
 import java.beans.PropertyVetoException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,27 +46,29 @@ import com.pm.core.service.impl.UserServiceImpl;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
-	public UserService createUserService() {
+	public UserService userService() {
 		return new UserServiceImpl();
 	}
 
 	@Bean
-	public LoggingAspect createLoggingAspect() {
+	public LoggingAspect loggingAspect() {
 		return new LoggingAspect();
 	}
 
+	//use autowire type : byname, need to use function name in @Qualifier("createUserDao") in UserServiceImpl.java
 	@Bean
-	public UserDao createUserDao() {
+	public UserDao userDao() {
 		return new UserDaoImpl();
 	}
 
+	
 	@Bean
-	public GroupDao createGroupDao() {
+	public GroupDao groupDao() {
 		return new GroupDaoImpl();
 	}
 
 	@Bean
-	public GroupService createGroupService() {
+	public GroupService groupService() {
 		return new GroupServiceImpl();
 	}
 

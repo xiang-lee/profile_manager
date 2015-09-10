@@ -3,6 +3,7 @@ package com.pm.core.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pm.core.dao.UserDao;
@@ -12,6 +13,8 @@ import com.pm.core.service.UserService;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
+	// @Qualifier("userDao123")
+	@Qualifier("userDao")
 	UserDao userDao;
 	
 	public User findByName(String name) {
