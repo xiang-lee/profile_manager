@@ -32,10 +32,6 @@ import com.pm.core.dao.GroupDao;
 import com.pm.core.dao.UserDao;
 import com.pm.core.dao.impl.GroupDaoImpl;
 import com.pm.core.dao.impl.UserDaoImpl;
-import com.pm.core.service.GroupService;
-import com.pm.core.service.UserService;
-import com.pm.core.service.impl.GroupServiceImpl;
-import com.pm.core.service.impl.UserServiceImpl;
 
 @Configuration
 @EnableWebMvc
