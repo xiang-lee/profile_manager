@@ -41,6 +41,7 @@ import com.pm.core.service.impl.UserServiceImpl;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
+// if we need multiple ComponetScan, uses string array, like this: @ComponentScan({"com.my.package.first","com.my.package.second"})
 @ComponentScan("com.pm.core.service")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 

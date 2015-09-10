@@ -29,10 +29,11 @@ public class User {
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "pm_user_group", joinColumns = { 
-			@JoinColumn(name = "user_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "group_id", 
-					nullable = false, updatable = false) })
+	@JoinTable(	name = "pm_user_group", 
+				joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false) }, 
+				inverseJoinColumns = { @JoinColumn(name = "group_id", 
+					nullable = false, updatable = false) }
+			)
 	public Set<Group> getGroups() {
 		return groups;
 	}

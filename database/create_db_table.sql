@@ -29,3 +29,5 @@ create table pm_user_group (
 -- data for Junit 
 insert pm_user (name,email) values ('xiang','xiangireland@gmail.com');
 insert pm_group (name) values ('group1');
+
+insert pm_user_group (user_id, group_id) values(1,1);
