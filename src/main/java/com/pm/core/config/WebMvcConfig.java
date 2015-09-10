@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -40,21 +41,33 @@ import com.pm.core.service.impl.UserServiceImpl;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
+@ComponentScan("com.pm.core.service")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-	@Bean
-	public UserService userService() {
-		return new UserServiceImpl();
-	}
+	/*
+	 * We can use @ComponentScan("com.pm.core.service") instead of creating the bean in this class, 
+	 * Make sure adding @Service in the service class
+	 */
+//	@Bean
+//	public UserService userService() {
+//		return new UserServiceImpl();
+//	}
+	
+//	@Bean
+//	public GroupService groupService() {
+//		return new GroupServiceImpl();
+//	}
 
 	@Bean
 	public LoggingAspect loggingAspect() {
 		return new LoggingAspect();
 	}
 
-	//use autowire type : byname, need to use function name in @Qualifier("createUserDao") in UserServiceImpl.java
+	//option 1: use autowire type : byname, need to use function name in @Qualifier("userDao1") in UserServiceImpl.java
+	//option 2:
+//	@Bean(name = "userDao1")
 	@Bean
-	public UserDao userDao() {
+	public UserDao userDao1() {
 		return new UserDaoImpl();
 	}
 
@@ -64,10 +77,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		return new GroupDaoImpl();
 	}
 
-	@Bean
-	public GroupService groupService() {
-		return new GroupServiceImpl();
-	}
+
 
 	/*
 	 * multipartResolver
