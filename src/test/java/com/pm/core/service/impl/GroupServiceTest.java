@@ -36,6 +36,7 @@ public class GroupServiceTest {
 	public void testFindAllGroups(){
 		List<Group> group = groupService.findAllGroups();
 		Assert.assertNotNull(group);
+		//xiang's comment in testFindAllGroups()
 	}
 
 }
