@@ -26,6 +26,7 @@ public class GroupServiceTest {
 	GroupService groupService;
 	@Test
 	public void testFindByName(){
+		//Test conflict git 
 		Group group = groupService.findByName("group1");
 		Assert.assertNotNull(group);
 	}
