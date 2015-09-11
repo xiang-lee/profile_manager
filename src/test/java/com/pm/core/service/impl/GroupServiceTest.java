@@ -30,6 +30,7 @@ public class GroupServiceTest {
 		//xiang's comment group
 		Group group = groupService.findByName("group1");
 		Assert.assertNotNull(group);
+		//Wei's comment in testFindByName()
 	}
 	
 	@Test
